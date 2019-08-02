@@ -6,11 +6,10 @@ export default class extends React.Component {
   }
   timeouts = [];
   scrolled = e => {
-    const { offsetHeight, scrollTop, scrollHeight } = this.ss;
-    // console.log(offsetHeight + scrollTop, scrollHeight);
-    if (scrollHeight - (offsetHeight + scrollTop) < 20) {
-      this.clearTimeouts();
-      this.timeouts.push(setTimeout(this.doJob, 500));
+    const { clientHeight, scrollTop, scrollHeight } = this.ss;
+    // console.log(clientHeight + scrollTop, scrollHeight);
+    if (scrollHeight === clientHeight + scrollTop) {
+      this.doJob();
     }
   };
 
